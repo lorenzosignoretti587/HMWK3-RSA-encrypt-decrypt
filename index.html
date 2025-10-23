@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA Encryption Demonstration</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+<body>
+
+    <header>
+        <h1 id="titoloPrincipale">RSA PUBLIC-KEY ENCRYPTION</h1>
+    </header>
+
+    <main>
+        <section id="rsa-intro">
+            <h2>1. RSA Principle and Key Generation</h2>
+            <p>
+                RSA is an asymmetric encryption algorithm based on the difficulty of factoring large prime numbers. It requires two distinct keys: a <strong>Public Key</strong> for encryption and a <strong>Private Key</strong> for decryption.
+            </p>
+            <p>
+                For this demonstration, a simplified version is used. The key generation process is summarized below.
+            </p>
+
+            <table id="rsa-key-table">
+                <thead>
+                    <tr><th>Parameter</th><th>Value</th><th>Role</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Prime p</td><td><strong>17</strong></td><td>A large prime number (simplified)</td></tr>
+                    <tr><td>Prime q</td><td><strong>11</strong></td><td>Another large prime number (simplified)</td></tr>
+                    <tr><td>Modulus N (p &middot; q)</td><td><strong>187</strong></td><td>Used in both Public and Private keys</td></tr>
+                    <tr><td>Public Exponent e</td><td><strong>7</strong></td><td>Used for <strong>Encryption</strong> (The Public Key)</td></tr>
+                    <tr><td>Private Exponent d</td><td><strong>23</strong></td><td>Used for <strong>Decryption</strong> (The Private Key)</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="rsa-encryption">
+            <h2>2. Encryption (Ciphering)</h2>
+            <p>
+                The Italian text below is converted into ciphertext using the Public Key (e=7, N=187) automatically upon page load.
+            </p>
+
+            <div class="input-container">
+                <textarea id="plaintext-input" rows="8">
+"Maestro mio", rispuos’io, "per udirti
+son io più certo; ma già m’era avviso
+che così fosse, e già voleva dirti:
+
+chi è ’n quel foco che vien sì diviso
+di sopra, che par surger de la pira
+dov’Eteòcle col fratel fu miso?".
+
+Rispuose a me: "Là dentro si martira
+Ulisse e Dïomede, e così insieme
+a la vendetta vanno come a l’ira;
+
+e dentro da la lor fiamma si geme
+l’agguato del caval che fé la porta
+onde uscì de’ Romani il gentil seme.
+
+Piangevisi entro l’arte per che, morta,
+Deïdamìa ancor si duol d’Achille,
+e del Palladio pena vi si porta".
+
+"S’ei posson dentro da quelle faville
+parlar", diss’io, "maestro, assai ten priego
+e ripriego, che ’l priego vaglia mille,
+
+che non mi facci de l’attender niego
+fin che la fiamma cornuta qua vegna;
+vedi che del disio ver’ lei mi piego!".
+
+Ed elli a me: "La tua preghiera è degna
+di molta loda, e io però l’accetto;
+ma fa che la tua lingua si sostegna.
+
+Lascia parlare a me, ch’i’ ho concetto
+ciò che tu vuoi; ch’ei sarebbero schivi,
+perch'e’ fuor greci, forse del tuo detto".
+
+Poi che la fiamma fu venuta quivi
+dove parve al mio duca tempo e loco,
+in questa forma lui parlare audivi:
+
+"O voi che siete due dentro ad un foco,
+s’io meritai di voi mentre ch’io vissi,
+s’io meritai di voi assai o poco
+
+quando nel mondo li alti versi scrissi,
+non vi movete; ma l’un di voi dica
+dove, per lui, perduto a morir gissi".
+
+Lo maggior corno de la fiamma antica
+cominciò a crollarsi mormorando,
+pur come quella cui vento affatica;
+
+indi la cima qua e là menando,
+come fosse la lingua che parlasse,
+gittò voce di fuori e disse: "Quando
+
+mi diparti’ da Circe, che sottrasse
+me più d’un anno là presso a Gaeta,
+prima che sì Enëa la nomasse,
+
+né dolcezza di figlio, né la pieta
+del vecchio padre, né ’l debito amore
+lo qual dovea Penelopè far lieta,
+
+vincer potero dentro a me l’ardore
+ch’i’ ebbi a divenir del mondo esperto
+e de li vizi umani e del valore;
+
+ma misi me per l’alto mare aperto
+sol con un legno e con quella compagna
+picciola da la qual non fui diserto.
+
+L’un lito e l’altro vidi infin la Spagna,
+fin nel Morrocco, e l’isola d’i Sardi,
+e l’altre che quel mare intorno bagna.
+
+Io e’ compagni eravam vecchi e tardi
+quando venimmo a quella foce stretta
+dov’Ercule segnò li suoi riguardi
+
+acciò che l’uom più oltre non si metta;
+da la man destra mi lasciai Sibilia,
+da l’altra già m’avea lasciata Setta.
+
+"O frati," dissi, "che per cento milia
+perigli siete giunti a l’occidente,
+a questa tanto picciola vigilia
+
+d’i nostri sensi ch’è del rimanente
+non vogliate negar l’esperïenza,
+di retro al sol, del mondo sanza gente.
+
+Considerate la vostra semenza:
+fatti non foste a viver come bruti,
+ma per seguir virtute e canoscenza".
+
+Li miei compagni fec’io sì aguti,
+con questa orazion picciola, al cammino,
+che a pena poscia li avrei ritenuti;
+
+e volta nostra poppa nel mattino,
+de’ remi facemmo ali al folle volo,
+sempre acquistando dal lato mancino.
+
+Tutte le stelle già de l’altro polo
+vedea la notte, e ’l nostro tanto basso,
+che non surgëa fuor del marin suolo.
+
+Cinque volte racceso e tante casso
+lo lume era di sotto da la luna,
+poi che 'ntrati eravam ne l'alto passo,
+
+quando n’apparve una montagna, bruna
+per la distanza, e parvemi alta tanto
+quanto veduta non avëa alcuna.
+
+Noi ci allegrammo, e tosto tornò in pianto;
+ché de la nova terra un turbo nacque
+e percosse del legno il primo canto.
+
+Tre volte il fé girar con tutte l’acque;
+a la quarta levar la poppa in suso
+e la prora ire in giù, com’altrui piacque,
+
+infin che ’l mar fu sovra noi richiuso".
+</textarea>
+                </div>
+            
+            <h3>Encrypted Ciphertext (Cifraggio)</h3>
+            <pre id="ciphertext-output" class="ciphertext-box">
+                [Ciphertext will appear here automatically]
+            </pre>
+        </section>
+        
+        <section id="rsa-decryption">
+            <h2>3. Decryption via Private Key & Reference Distribution</h2>
+            <p>
+                Only the correct <strong>Private Key</strong> (d=23, N=187) can transform the ciphertext back into a plaintext that matches the <strong>Italian Language Reference Distribution</strong> (i.e., a legible message).
+            </p>
+            <h3>Decrypted Plaintext (Decifraggio)</h3>
+            <pre id="decrypted-output" class="plaintext-box">
+                [Decrypted plaintext will appear here automatically]
+            </pre>
+            </section>
+
+        <section id="js-code">
+            <h2>4. JavaScript Code for RSA</h2>
+            <p>
+                The encryption and decryption processes are executed by the following JavaScript functions.
+            </p>
+            <pre id="rsa-code-output" class="ciphertext-box">
+                [Code will be injected here by rsa.js]
+            </pre>
+        </section>
+
+    </main>
+    
+    <script src="rsa.js"></script> 
+    
+    <footer>
+        <p>&copy; 2025 RSA Demonstration Homework</p>
+    </footer>
+</body>
+</html>
